@@ -1,0 +1,17 @@
+<div class="container">
+  <h3>Admin Dashboard</h3>
+  <br>
+  <div>
+
+    <button style="margin-right: 10px;" class="btn btn-primary btn-lg" (click)="onTabClick(0)">Courses</button>
+
+    <button class="btn btn-success btn-lg" (click)="onTabClick(1)">Questions</button>
+
+  </div>
+  <hr>
+  <br>
+  <div class="container">
+    <app-add-course *ngIf="tabIndex === 0"></app-add-course>
+    <app-add-question *ngIf="tabIndex === 1"></app-add-question>
+  </div>
+</div>

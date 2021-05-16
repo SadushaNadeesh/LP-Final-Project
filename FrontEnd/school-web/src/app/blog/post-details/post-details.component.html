@@ -1,0 +1,66 @@
+<div style="width: 400px; margin: auto;">
+    <div *ngIf="currentPost" class="edit-form">
+      <h4>Tutorial</h4>
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentPost.name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <input
+            type="text"
+            class="form-control"
+            id="content"
+            [(ngModel)]="currentPost.content"
+            name="content"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label><strong>Status:</strong></label>
+          {{ currentPost.published ? "Published" : "Pending" }}
+        </div>
+      </form>
+  
+      <button
+        class="badge badge-primary mr-2"
+        *ngIf="currentPost.published"
+        (click)="updatePublished(false)"
+      >
+        UnPublish
+      </button>
+      <button
+        *ngIf="!currentPost.published"
+        class="badge badge-primary mr-2"
+        (click)="updatePublished(true)"
+      >
+        Publish
+      </button>
+  
+      <button class="badge badge-danger mr-2" (click)="deletePost()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success"
+        (click)="updatePost()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentPost">
+      <br />
+      <p>Cannot access this Post...</p>
+    </div>
+  </div>
+  
