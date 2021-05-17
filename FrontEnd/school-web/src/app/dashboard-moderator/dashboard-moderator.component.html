@@ -1,21 +1,41 @@
-<div class="container">
-    <h3>Teacher Dashboard</h3>
-    <br>
-    <div>
-      <button style="margin-right: 10px;" class="btn btn-primary btn-lg" (click)="onTabClick(0)">Add Courses</button>
-      <button style="margin-right: 10px;" class="btn btn-success btn-lg" (click)="onTabClick(1)">Add Questions</button>
-      <button style="margin-right: 10px;" class="btn btn-success btn-lg" (click)="onTabClick(2)">Add Post</button>
-      <button style="margin-right: 10px;" class="btn btn-success btn-lg" (click)="onTabClick(3)">Add Subject</button>
-      <button class="btn btn-success btn-lg" (click)="onTabClick(4)">Add Content</button>
-  
+<div id="page-wrapper">
+  <div id="sidebar-drawer-wrapper">
+    <ul>
+      <li><i class="fa fa-dashboard fa-fw"></i><a href="#" id=""><span>Dashboard</span></a></li>
+      <li><i class="fa fa-address-book fa-fw"></i><a href="#" id=""><span>Dashboard</span></a></li>
+      <li><i class="fa fa-cubes fa-fw"></i><a href="#" id=""><span>Dashboard</span></a></li>
+    </ul>
+  </div>
+  <div id="main-content-wrapper" class="container-fluid">
+    <div class="jumbotron">
+      <h1>ASP.NET</h1>
+      <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS
+        and JavaScript.</p>
+      <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more »</a></p>
     </div>
-    <hr>
-    <br>
-    <div class="container">
-      <app-add-course *ngIf="tabIndex === 0"></app-add-course>
-      <app-add-question *ngIf="tabIndex === 1"></app-add-question>
-      <app-add-post *ngIf="tabIndex === 2"></app-add-post>
-      <app-add-subject *ngIf="tabIndex === 3"></app-add-subject>
-      <app-add-content *ngIf="tabIndex === 4"></app-add-content>
+
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+          ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+          enables a clean separation of concerns and gives you full control over markup
+          for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more »</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in
+          Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more »</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your
+          applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more »</a></p>
+      </div>
     </div>
   </div>
+</div>

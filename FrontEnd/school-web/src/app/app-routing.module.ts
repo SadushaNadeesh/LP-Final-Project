@@ -18,6 +18,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddQuestionComponent } from './question/add-question/add-question.component';
 import { QuestionDetailsComponent } from './question/question-details/question-details.component';
 import { QuestionListComponent } from './question/question-list/question-list.component';
+import { QizzesComponent } from './quiz/qizzes/qizzes.component';
+import { ResultComponent } from './quiz/result/result.component';
 import { RegisterComponent } from './register/register.component';
 import { AddSubjectComponent } from './subject/add-subject/add-subject.component';
 import { SubjectDetailsComponent } from './subject/subject-details/subject-details.component';
@@ -46,7 +48,9 @@ const routes: Routes = [
   { path: 'add-question', component: AddQuestionComponent },
   { path: 'subjects', component: SubjectsListComponent },
   { path: 'subject/:id', component: SubjectDetailsComponent },
-  { path: 'add-subject', component: AddSubjectComponent }
+  { path: 'add-subject', component: AddSubjectComponent },
+  { path: 'quizzes', component: QizzesComponent },
+  { path: 'result', component: ResultComponent }
 ];
 
 @NgModule({

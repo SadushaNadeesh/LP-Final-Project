@@ -39,10 +39,13 @@ export class CoursesController {
       @Get('courseQuestions/:id')
       async readCourseWithQuestion(@Param('id') id: number) {
         const data =  await this.coursesService.getCourseById(id);
+        const Qns = data.questions;
+        
         return {
           statusCode: HttpStatus.OK,
           message: 'Course fetched successfully',
-          data,
+          // data,
+          Qns
         };
       }
 

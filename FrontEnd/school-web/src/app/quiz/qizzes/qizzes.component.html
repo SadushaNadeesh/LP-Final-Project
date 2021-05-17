@@ -1,0 +1,28 @@
+<div style="width: 600px; margin: auto;">
+  <div class="row" *ngIf="qns && this.qnProgress != 10">
+    <div class="col s8 offset-s2">
+      <span>Time Elapsed : {{displayTimeElapsed()}}</span>
+      <div class="progress">
+        <div class="determinate" [style.width.%]="(qnProgress+1)*10"></div>
+      </div>
+      <div class="card blue-grey darken-1">
+        <div class="card-content">
+          <span class="card-title">{{qnProgress+1}}</span>
+          <p>{{qns[qnProgress].question}}</p>
+          <p>{{qnProgress}}</p>
+        </div>
+        <div class="card-action">
+          <ul>
+            <ng-container>
+              <li  *ngFor="let qo of option[qnProgress];" >
+                {{qo.option1}}
+              </li>
+              
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

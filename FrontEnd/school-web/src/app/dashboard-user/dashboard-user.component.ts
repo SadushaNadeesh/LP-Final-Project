@@ -12,4 +12,10 @@ export class DashboardUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  tabIndex: number= 6 ;
+
+  onTabClick(index: any){
+        this.tabIndex = index;
+   }
+
 }

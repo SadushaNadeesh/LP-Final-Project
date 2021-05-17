@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const AUTH_API = 'http://localhost:3000/api/';
+const apiUrl = 'http://localhost:3002/api/courseQuestions';
 const baseUrl = 'http://localhost:3002/api/course';
 
 const httpOptions = {
@@ -36,6 +36,10 @@ export class CourseService {
 
   get(id: any): Observable<any> {
     return this.http.get(`${baseUrl}/${id}`);
+  }
+
+  getCourseQuestionsById(id: any): Observable<any>{
+    return this.http.get(`${apiUrl}/${id}`);
   }
 
   getAll(): Observable<any> {

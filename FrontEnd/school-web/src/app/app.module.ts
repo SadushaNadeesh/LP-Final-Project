@@ -28,6 +28,9 @@ import { SubjectsListComponent } from './subject/subjects-list/subjects-list.com
 import { AddContentComponent } from './content/add-content/add-content.component';
 import { ContentDetailsComponent } from './content/content-details/content-details.component';
 import { ContentsListComponent } from './content/contents-list/contents-list.component';
+import { QizzesComponent } from './quiz/qizzes/qizzes.component';
+import { ResultComponent } from './quiz/result/result.component';
+import { TestComponent } from './quiz/test/test.component';
 
 //import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
@@ -55,7 +58,10 @@ import { ContentsListComponent } from './content/contents-list/contents-list.com
     SubjectsListComponent,
     AddContentComponent,
     ContentDetailsComponent,
-    ContentsListComponent
+    ContentsListComponent,
+    QizzesComponent,
+    ResultComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
