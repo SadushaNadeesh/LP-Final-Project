@@ -23,9 +23,9 @@ export class QizzesComponent implements OnInit {
       this.seconds = 0;
       this.qnProgress = 0;
       this.quizService.getCourseQuestionsById(1).subscribe(
-        (option: any) => {
-          this.qns = option.Qns;
-          this.option = option.Qns;
+        (data: any) => {
+          this.qns = data.Qns;
+          this.option = data.Qns;
           this.startTimer();
           console.log(this.option);
         }
