@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContentService } from 'src/app/_services/content.service';
 import { SubjectService } from 'src/app/_services/subject.service';
 
 @Component({
@@ -8,22 +9,25 @@ import { SubjectService } from 'src/app/_services/subject.service';
 })
 export class SubjectsListComponent implements OnInit {
 
-  tutorials: any;
-  currentTutorial: any = null;
+  subjects: any[]=[];
+  currentSubject: any = null;
   currentIndex = -1;
   title = '';
 
-  constructor(private tutorialService: SubjectService) { }
+  contents: any[] =[] ;
+  currentContent: any='';
+
+  constructor(private subjectService: SubjectService, private contentService: ContentService) { }
 
   ngOnInit(): void {
-    this.retrieveTutorials();
+    this.retrieveSubjects();
   }
 
-  retrieveTutorials(): void {
-    this.tutorialService.getAll()
+  retrieveSubjects(): void {
+    this.subjectService.getAll()
       .subscribe(
         data => {
-          this.tutorials = data;
+          this.subjects = data.subject;
           console.log(data);
         },
         error => {
@@ -32,33 +36,34 @@ export class SubjectsListComponent implements OnInit {
   }
 
   refreshList(): void {
-    this.retrieveTutorials();
-    this.currentTutorial = null;
+    this.retrieveSubjects();
+    this.currentSubject = null;
     this.currentIndex = -1;
   }
 
-  setActiveTutorial(tutorial: any, index: number): void {
-    this.currentTutorial = tutorial;
-    this.currentIndex = index;
+  setActiveTopic(subjectId: number, index: number): void {
+    //console.log(tutorial);
+    this.retrieveContents(subjectId);
   }
 
-  removeAllTutorials(): void {
-    this.tutorialService.deleteAll()
+  retrieveContents(subjectId: number): void {
+    this.subjectService.getSubjectContentsById(subjectId)
       .subscribe(
-        response => {
-          console.log(response);
-          this.refreshList();
+        data => {
+          this.contents = data.content.contents;
+          console.log(this.contents);
         },
         error => {
           console.log(error);
         });
   }
 
+
   searchTitle(): void {
-    this.tutorialService.findByTitle(this.title)
+    this.subjectService.findByTitle(this.title)
       .subscribe(
         data => {
-          this.tutorials = data;
+          this.subjects = data;
           console.log(data);
         },
         error => {

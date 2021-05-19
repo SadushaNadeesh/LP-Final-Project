@@ -9,50 +9,37 @@ import { CourseService } from 'src/app/_services/course.service';
   styleUrls: ['./qizzes.component.scss']
 })
 export class QizzesComponent implements OnInit {
+  courses: any;
+  currentCourse: any = null;
+  currentIndex = -1;
+  title = '';
 
-  qns: any;
-  option: any[]=[];
-  seconds: number=0;
-  timer: any;
-  qnProgress: number =0;
-  correctAnswerCount: number = 0;
-
-  constructor(private router: Router, private quizService: CourseService, private http: HttpClient) { }
+  constructor(private router: Router, private courseService: CourseService, private http: HttpClient) { }
 
   ngOnInit(): void {
-      this.seconds = 0;
-      this.qnProgress = 0;
-      this.quizService.getCourseQuestionsById(1).subscribe(
-        (data: any) => {
-          this.qns = data.Qns;
-          this.option = data.Qns;
-          this.startTimer();
-          console.log(this.option);
-        }
-      );
-
+    this.retrieveCourses();
+  }
+  retrieveCourses(): void {
+    this.courseService.getAll()
+      .subscribe(
+        data => {
+          this.courses = data.course;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
-
-  startTimer() {
-    this.timer = setInterval(() => {
-      this.seconds++;
-      localStorage.setItem('seconds', this.seconds.toString());
-    }, 1000);
+  refreshList(): void {
+    this.retrieveCourses();
+    this.currentCourse = null;
+    this.currentIndex = -1;
   }
 
-  displayTimeElapsed() {
-    return Math.floor(this.seconds / 3600) + ':' + Math.floor(this.seconds / 60) + ':' + Math.floor(this.seconds % 60);
-  }
-
-
-  Answer(qID: any, choice: any) {
-    this.qns[this.qnProgress].answer = choice;
-    this.qnProgress++;
-    if (this.qnProgress == this.qns.length) {
-      clearInterval(this.timer);
-      this.router.navigate(['/result']);
-    }
+  setActiveCourse(course: any, index:any): void {
+    this.currentCourse = course;
+    this.currentIndex = index;
   }
 
 }

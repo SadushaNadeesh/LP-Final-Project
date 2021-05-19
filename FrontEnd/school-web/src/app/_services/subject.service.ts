@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const baseUrl = 'http://localhost:3001/api/subject';
+const baseUrl2 = 'http://localhost:3001/api/subjectContent';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class SubjectService {
 
   getAll(): Observable<any> {
     return this.http.get(baseUrl);
+  }
+
+  getSubjectContentsById(id: number): Observable<any>{
+    return this.http.get(`${baseUrl2}/${id}`);
   }
 
   get(id: any): Observable<any> {

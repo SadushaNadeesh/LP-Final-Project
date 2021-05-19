@@ -1,28 +1,41 @@
-<div style="width: 600px; margin: auto;">
-  <div class="row" *ngIf="qns && this.qnProgress != 10">
-    <div class="col s8 offset-s2">
-      <span>Time Elapsed : {{displayTimeElapsed()}}</span>
-      <div class="progress">
-        <div class="determinate" [style.width.%]="(qnProgress+1)*10"></div>
-      </div>
-      <div class="card blue-grey darken-1">
-        <div class="card-content">
-          <span class="card-title">{{qnProgress+1}}</span>
-          <p>{{qns[qnProgress].question}}</p>
-          <p>{{qnProgress}}</p>
-        </div>
-        <div class="card-action">
-          <ul>
-            <ng-container>
-              <li  *ngFor="let qo of option[qnProgress];" >
-                {{qo.option1}}
-              </li>
-              
-            </ng-container>
-          </ul>
-        </div>
-      </div>
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav">
+            <h4>Latest News</h4>
+            <ul class="nav nav-pills nav-stacked">
 
+            </ul><br>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search Blog..">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-sm-9">
+            <h4><small>RECENT QUIZZES</small></h4>
+            <hr>
+            <div class="row" *ngFor="let course of courses; let i = index" [class.active]="i == currentIndex"
+                (click)="setActiveCourse(course, i)">
+                <h2>{{ course.name }}</h2>
+                <h5><span class="glyphicon glyphicon-time"></span> Updated in {{ course.name }}</h5>
+                <br>
+                <p>
+                    {{ course.name }}
+                </p>
+                <a class="badge badge-warning" routerLink="/test/{{ course.id }}">
+                    Take Exam
+                </a>
+                <br>
+                <hr>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
+
+<footer class="container-fluid">
+    <p>Footer Text</p>
+</footer>

@@ -1,1 +1,14 @@
-<p>result works!</p>
+<div class="card-image" style="width: 600px; margin: auto; padding-top: 20px;">
+    <!-- <img src="../../assets/img/trophy.png" style="width: 250px;height : 250px;"> -->
+  <!-- </div> -->
+  <div class="card-stacked">
+    <div class="card-content">
+      <h4>{{quizService.getParticipantName()}}</h4>
+      <h3>{{quizService.correctAnswerCount}}/10</h3>
+      <span>Time Elapsed : {{quizService.displayTimeElapsed()}}</span>
+    </div>
+    <div class="card-action">
+      <button class="btn" (click)="OnSubmit()">Submit</button>
+    </div>
+  </div>
+</div>

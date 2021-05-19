@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 const apiUrl = 'http://localhost:3002/api/courseQuestions';
 const baseUrl = 'http://localhost:3002/api/course';
+const baseUrl1 = 'http://localhost:3002/api/courses';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -43,7 +44,7 @@ export class CourseService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get(baseUrl);
+    return this.http.get(baseUrl1);
   }
 
   update(id: any, data: any): Observable<any> {

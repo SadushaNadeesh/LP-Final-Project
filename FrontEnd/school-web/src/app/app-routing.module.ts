@@ -20,6 +20,7 @@ import { QuestionDetailsComponent } from './question/question-details/question-d
 import { QuestionListComponent } from './question/question-list/question-list.component';
 import { QizzesComponent } from './quiz/qizzes/qizzes.component';
 import { ResultComponent } from './quiz/result/result.component';
+import { TestComponent } from './quiz/test/test.component';
 import { RegisterComponent } from './register/register.component';
 import { AddSubjectComponent } from './subject/add-subject/add-subject.component';
 import { SubjectDetailsComponent } from './subject/subject-details/subject-details.component';
@@ -50,7 +51,8 @@ const routes: Routes = [
   { path: 'subject/:id', component: SubjectDetailsComponent },
   { path: 'add-subject', component: AddSubjectComponent },
   { path: 'quizzes', component: QizzesComponent },
-  { path: 'result', component: ResultComponent }
+  { path: 'result', component: ResultComponent },
+  { path: 'test/:id', component: TestComponent }
 ];
 
 @NgModule({

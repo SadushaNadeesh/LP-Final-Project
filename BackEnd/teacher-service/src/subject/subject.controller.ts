@@ -8,14 +8,14 @@ export class SubjectController {
 
   @Get('subject')
   async showAllSubject() {
-    return await this.subjectService.showAll();
+    //return await this.subjectService.showAll();
 
-    //   const subject =  await this.subjectService.showAll();
-    //   return {
-    //     statusCode: HttpStatus.OK,
-    //     message: 'subject fetched successfully',
-    //     subject
-    //   };
+      const subject =  await this.subjectService.showAll();
+      return {
+        statusCode: HttpStatus.OK,
+        message: 'subject fetched successfully',
+        subject
+      };
   }
 
   @Post('subject')
@@ -43,11 +43,11 @@ export class SubjectController {
 
   @Get('subjectContent/:id')
   async readSubjectContent(@Param('id') id: number) {
-    const data = await this.subjectService.getSubjectById(id);
+    const content = await this.subjectService.getSubjectById(id);
     return {
       statusCode: HttpStatus.OK,
-      message: 'Data fetched successfully',
-      data,
+      message: 'content fetched successfully',
+      content
     };
   }
 

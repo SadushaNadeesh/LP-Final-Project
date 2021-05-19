@@ -29,6 +29,13 @@ export class CoursesService {
         return await this.courseRepo.findOne(id, {relations: ['questions']});
       }
 
+      async getCourseAnswerById(id: number){
+        return await this.courseRepo.createQueryBuilder('foo')
+        .where({ id: 1})
+        .select(['foo.answer'])
+        .getMany();
+      }
+
       async read(id: number) {
         return await this.courseRepo.findOne({ where: { id: id } });
       }
