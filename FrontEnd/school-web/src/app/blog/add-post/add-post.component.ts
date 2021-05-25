@@ -18,9 +18,10 @@ export class AddPostComponent implements OnInit {
   submitted = false;
   teacher_id = '';
   isLoggedIn = false;
-  user_id = '';
+  user_id: number = 2;
   status = 'PENDING'
   cr_date: any = new Date();
+  fileToUpload: any ;
 
   constructor(private blogService: BlogService, private tokenStorage: TokenStorageService) {
     //this.cr_date = this.datePipe.transform(this.cr_date, 'yyyy-MM-dd');
@@ -30,8 +31,19 @@ export class AddPostComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       console.log(" Token login component token:  "+this.tokenStorage.getToken);
       this.isLoggedIn = true;
-      this.user_id = this.tokenStorage.getUser().id;
+      //this.user_id = this.tokenStorage.getUser().id;
     }
+  }
+
+  handleFileInput(file: FileList) {
+    this.fileToUpload = file.item(0);
+
+    //Show image preview
+    var reader = new FileReader();
+    // reader.onload = (event:any) => {
+    //   this.imageUrl = event.target.result;
+    // }
+    reader.readAsDataURL(this.fileToUpload);
   }
 
   saveTutorial(): void {

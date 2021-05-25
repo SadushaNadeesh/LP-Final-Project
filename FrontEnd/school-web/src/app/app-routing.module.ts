@@ -25,6 +25,7 @@ import { RegisterComponent } from './register/register.component';
 import { AddSubjectComponent } from './subject/add-subject/add-subject.component';
 import { SubjectDetailsComponent } from './subject/subject-details/subject-details.component';
 import { SubjectsListComponent } from './subject/subjects-list/subjects-list.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -52,7 +53,8 @@ const routes: Routes = [
   { path: 'add-subject', component: AddSubjectComponent },
   { path: 'quizzes', component: QizzesComponent },
   { path: 'result', component: ResultComponent },
-  { path: 'test/:id', component: TestComponent }
+  { path: 'test/:id', component: TestComponent },
+  { path: 'user/:id', component: UserDetailComponent }
 ];
 
 @NgModule({

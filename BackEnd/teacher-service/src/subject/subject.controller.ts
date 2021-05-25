@@ -1,6 +1,7 @@
-import { BadRequestException, Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post, Req, Res, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post, Req, Res, UnauthorizedException, UseInterceptors, UploadedFile, UploadedFiles } from '@nestjs/common';
 import { Subject } from './subject.entity';
 import { SubjectService } from './subject.service';
+import { FileInterceptor, FilesInterceptor } from "@nestjs/platform-express";
 
 @Controller('api')
 export class SubjectController {
@@ -20,12 +21,19 @@ export class SubjectController {
 
   @Post('subject')
   async createSubject(@Body() data: Subject) {
-    const subject = await this.subjectService.create(data);
-    return {
-      statusCode: HttpStatus.OK,
-      message: 'subject created successfully',
-      subject
-    };
+    // const subject = await this.subjectService.create(data);
+    // return {
+    //   statusCode: HttpStatus.OK,
+    //   message: 'subject created successfully',
+    //   subject
+    // };
+    console.log(data);
+  }
+
+  @Post('subjects')
+  @UseInterceptors(FileInterceptor("photo", { dest: "./uploads" }))
+  uploadSingle(@UploadedFile() file) {
+    console.log(file);
   }
 
   @Get('subject/:id')

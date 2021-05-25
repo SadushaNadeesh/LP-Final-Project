@@ -31,6 +31,9 @@ import { ContentsListComponent } from './content/contents-list/contents-list.com
 import { QizzesComponent } from './quiz/qizzes/qizzes.component';
 import { ResultComponent } from './quiz/result/result.component';
 import { TestComponent } from './quiz/test/test.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UsersComponent } from './user/users/users.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
 
 //import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
@@ -61,13 +64,16 @@ import { TestComponent } from './quiz/test/test.component';
     ContentsListComponent,
     QizzesComponent,
     ResultComponent,
-    TestComponent
+    TestComponent,
+    UsersComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

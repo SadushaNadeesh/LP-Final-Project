@@ -3,8 +3,8 @@
   <!-- </div> -->
   <div class="card-stacked">
     <div class="card-content">
-      <h4>{{quizService.getParticipantName()}}</h4>
-      <h3>{{quizService.correctAnswerCount}}/10</h3>
+      <h4>{{currentUser.name}}</h4>
+      <h3>{{quizService.correctAnswerCount}}/{{this.quizService.qns.length}}</h3>
       <span>Time Elapsed : {{quizService.displayTimeElapsed()}}</span>
     </div>
     <div class="card-action">

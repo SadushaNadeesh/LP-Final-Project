@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(name, password).subscribe(
       data => {
         const jwtData = JSON.stringify(data);
+        console.log(data);
         //const jwtData2 = jwtData.split(":")[1];
 
         //alert("This is from login component: "+jwtData);
@@ -54,7 +55,8 @@ export class LoginComponent implements OnInit {
         this.reloadPage();
       },
       err => {
-        // console.log(this.tokenStorage.getUser().roles);
+        //console.log(this.tokenStorage.getUser().roles);
+        //console.log(password);
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }

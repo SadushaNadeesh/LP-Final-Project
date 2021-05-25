@@ -45,17 +45,4 @@ export class TokenStorageService {
     window.sessionStorage.setItem(TEST_KEY, JSON.stringify(pId));
   }
 
-  public getTestInfo(): any {
-    //alert("This is from save user: "+JSON.stringify(user));
-    // return window.sessionStorage.getItem(TEST_KEY);
-
-    const user = window.sessionStorage.getItem(TEST_KEY);
-    if (user) {
-      return JSON.parse(user);
-    }
-
-    return {};
-
-  }
-
 }

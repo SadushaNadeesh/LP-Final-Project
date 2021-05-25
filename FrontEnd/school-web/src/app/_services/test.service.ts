@@ -33,7 +33,7 @@ export class TestService {
   }
 
   getParticipantName() {
-    var participant = this.tokenStorage.getUser.name;
+    var participant = this.tokenStorage.getUser().name;
     return participant;
   }
 

@@ -49,17 +49,17 @@ export class CoursesController {
         };
       }
 
-      @Get('courseQuestionsAnswer/:id')
-      async readCourseWithQuestionAnswer(@Param('id') id: number) {
-        const answer =  await this.coursesService.getCourseAnswerById(id);
+      // @Get('courseQuestionsAnswer/:id')
+      // async readCourseWithQuestionAnswer(@Param('id') id: number) {
+      //   const answer =  await this.coursesService.getCourseAnswerById(id);
         
-        return {
-          statusCode: HttpStatus.OK,
-          message: 'Course fetched successfully',
-          // data,
-          answer
-        };
-      }
+      //   return {
+      //     statusCode: HttpStatus.OK,
+      //     message: 'Course fetched successfully',
+      //     // data,
+      //     answer
+      //   };
+      // }
 
       @Patch('course/:id')
       async uppdateCourse(@Param('id') id: number, @Body() data: Partial<Courses>) {

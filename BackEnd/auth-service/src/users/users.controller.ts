@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, Post, Req, Res, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, HttpStatus, Param, Post, Req, Res, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from './users.service';
 import * as bcrypt from 'bcrypt';
@@ -49,7 +49,12 @@ export class UsersController {
         //return response.cookie('jwt', jwt, { httpOnly: true });
         response.cookie('jwt', jwt, { httpOnly: true });
 
-        return jwt;
+        //return jwt;
+        return {
+            statusCode: HttpStatus.OK,
+            message: 'Users fetched successfully',
+            jwt
+          };
     }
 
     @Get('user')
@@ -79,6 +84,26 @@ export class UsersController {
             message: 'success'
         }
     }
+    
+    @Get('users')
+    async showAllUsers(){
+        const users = await this.usersService.showAll();
 
+        return {
+            statusCode: HttpStatus.OK,
+            message: 'Users fetched successfully',
+            users
+          };
+    }
+
+    @Get('user/:id')
+      async readCourse(@Param('id') id: number) {
+        const data =  await this.usersService.read(id);
+        return {
+          statusCode: HttpStatus.OK,
+          message: 'Course fetched successfully',
+          data,
+        };
+      }
 
 }

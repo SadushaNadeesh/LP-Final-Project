@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Questions } from 'src/questions/questions.entity';
 import { Repository } from 'typeorm';
 import { Courses } from './courses.entity';
 
@@ -29,12 +30,10 @@ export class CoursesService {
         return await this.courseRepo.findOne(id, {relations: ['questions']});
       }
 
-      async getCourseAnswerById(id: number){
-        return await this.courseRepo.createQueryBuilder('foo')
-        .where({ id: 1})
-        .select(['foo.answer'])
-        .getMany();
-      }
+      // async getCourseAnswerById(id: number){
+      //   return await this.questionRepo.findOne(id);
+        
+      // }
 
       async read(id: number) {
         return await this.courseRepo.findOne({ where: { id: id } });

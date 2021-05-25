@@ -18,4 +18,12 @@ export class UsersService {
         return this.usersRepo.findOne(condition);
     }
 
+    async showAll(){
+        return await this.usersRepo.find();
+    }
+
+    async read(id: number) {
+        return await this.usersRepo.findOne({ where: { id: id } });
+      }
+
 }

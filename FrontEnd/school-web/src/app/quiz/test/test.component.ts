@@ -29,11 +29,11 @@ export class TestComponent implements OnInit {
     this.quizService.getCourseQuestionsById(id).subscribe(
       (data: any) => {
         this.quizService.qns = data.Qns;
-        if (this.quizService.qns.length > 0
-          && !this.currentCourse) {
+        if (this.quizService.qns.length > 0) {
           this.currentCourse = true;
         }
-        console.log(this.quizService.qns);
+        console.log(this.quizService.qns.length);
+        //console.log(this.quizService.qns);
         this.startTimer();
 
       },
@@ -52,7 +52,8 @@ export class TestComponent implements OnInit {
   }
 
   Answer(qID: any, choice: any) {
-    this.quizService.qns[this.quizService.qnProgress].answer = choice;
+    this.quizService.qns[this.quizService.qnProgress].selectedAnswer = choice;
+    //console.log("=================> "+this.quizService.qnProgress);
     this.quizService.qnProgress++;
     if (this.quizService.qnProgress == this.quizService.qns.length) {
       clearInterval(this.quizService.timer);

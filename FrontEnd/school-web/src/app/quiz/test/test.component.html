@@ -1,4 +1,5 @@
-<div style="width: 600px; margin: auto; padding-top: 20px;" class="row" *ngIf="quizService.qns && this.quizService.qnProgress != 10">
+<div style="width: 600px; margin: auto; padding-top: 20px;" class="row"
+  *ngIf="quizService.qns && this.quizService.qnProgress != 10">
   <div class="col s8 offset-s2" *ngIf="currentCourse">
     <span>Time Elapsed : {{quizService.displayTimeElapsed()}}</span>
     <div class="progress">
@@ -12,27 +13,25 @@
       <div class="card-action">
         <ul class="list-group">
           <!-- <ng-container *ngFor="let option of quizService.qns[quizService.qnProgress].Options;let i = index"> -->
-            <li  class="list-group-item" (click)="Answer(quizService.qns[quizService.qnProgress].QnID,1)">
-              {{quizService.qns[quizService.qnProgress].option1}}
-            </li>
-            <li  class="list-group-item" (click)="Answer(quizService.qns[quizService.qnProgress].QnID,2)">
-              {{quizService.qns[quizService.qnProgress].option2}}
-            </li>
-            <li  class="list-group-item" (click)="Answer(quizService.qns[quizService.qnProgress].QnID,3)">
-              {{quizService.qns[quizService.qnProgress].option3}}
-            </li>
-            <li  class="list-group-item" (click)="Answer(quizService.qns[quizService.qnProgress].QnID,4)">
-              {{quizService.qns[quizService.qnProgress].option4}}
-            </li>
+          <li class="list-group-item" (click)="Answer(quizService.qns[quizService.qnProgress].QnID,1)">
+            {{quizService.qns[quizService.qnProgress].option1}}
+          </li>
+          <li class="list-group-item" (click)="Answer(quizService.qns[quizService.qnProgress].QnID,2)">
+            {{quizService.qns[quizService.qnProgress].option2}}
+          </li>
+          <li class="list-group-item" (click)="Answer(quizService.qns[quizService.qnProgress].QnID,3)">
+            {{quizService.qns[quizService.qnProgress].option3}}
+          </li>
+          <li class="list-group-item" (click)="Answer(quizService.qns[quizService.qnProgress].QnID,4)">
+            {{quizService.qns[quizService.qnProgress].option4}}
+          </li>
           <!-- </ng-container> -->
         </ul>
       </div>
     </div>
-
-    <div *ngIf="!currentCourse">
-      <br />
-      <p>Quiz related to this course currently unavailable!...</p>
-    </div>
-
+  </div>
+  <div *ngIf="!currentCourse">
+    <br />
+    <p>Quiz related to this course currently unavailable!...</p>
   </div>
 </div>
