@@ -9,17 +9,42 @@ import { AuthService } from 'src/app/_services/auth.service';
 })
 export class UsersComponent implements OnInit {
 
+  user = {
+    name: '',
+    email: '',
+    password: '',
+  };
+
   closeResult = '';
   message = '';
   users: any[] = [];
   currentUser: any = '';
   currentIndex = -1;
   title = '';
+  submitted = false;
 
   constructor(private authService: AuthService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.retrieveUsers();
+  }
+
+  saveUser(): void {
+    const data = {
+      name: this.user.name,
+      email: this.user.email,
+      password: this.user.password
+    }
+
+    this.authService.register(data.name, data.email, data.password)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.submitted = true;
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   retrieveUsers(): void {
@@ -46,31 +71,8 @@ export class UsersComponent implements OnInit {
     console.log("" + this.currentUser.id, "index number " + index);
   }
 
-  // removeAllContents(): void {
-  //   this.authService.deleteAll()
-  //     .subscribe(
-  //       response => {
-  //         console.log(response);
-  //         this.refreshList();
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       });
-  // }
-
-  // searchTitle(): void {
-  //   this.authService.findByTitle(this.title)
-  //     .subscribe(
-  //       data => {
-  //         this.contents = data;
-  //         console.log(data);
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       });
-  // }
-  modalContent:any;
-  open(content: any, modalContent:any) {
+  modalContent: any;
+  open(content: any, modalContent: any) {
     this.modalContent = modalContent;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -79,8 +81,8 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  modalContent2:any;
-  open2(content2: any, modalContent2:any) {
+  modalContent2: any;
+  open2(content2: any, modalContent2: any) {
     this.modalContent2 = modalContent2;
     this.getContent(this.modalContent2.id);
     this.modalService.open(content2, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
@@ -112,38 +114,38 @@ export class UsersComponent implements OnInit {
         });
   }
 
-  updatePublished(status: any): void {
+  updateStatus(status: any): void {
     const data = {
       name: this.currentUser.name,
-      description: this.currentUser.description,
-      published: status
+      email: this.currentUser.email,
+      roles: status
     };
 
-    // this.contentService.update(this.currentContent.id, data)
-    //   .subscribe(
-    //     response => {
-    //       this.currentContent.published = status;
-    //       console.log(response);
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     });
+    this.authService.update(this.currentUser.id, data)
+      .subscribe(
+        response => {
+          this.currentUser.roles = status;
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
-  updateContent(): void {
+  updateUser(): void {
     console.log("update");
-    // this.contentService.update(this.currentContent.id, this.currentContent)
-    //   .subscribe(
-    //     response => {
-    //       console.log(response);
-    //       this.message = 'The content was updated successfully!';
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     });
+    this.authService.update(this.currentUser.id, this.currentUser)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.message = 'The user was updated successfully!';
+        },
+        error => {
+          console.log(error);
+        });
   }
 
-  deleteContent(): void {
+  deleteUser(): void {
     console.log("delete");
     // this.contentService.delete(this.currentContent.id)
     //   .subscribe(
@@ -154,6 +156,14 @@ export class UsersComponent implements OnInit {
     //     error => {
     //       console.log(error);
     //     });
+  }
+  newUser(): void {
+    this.submitted = false;
+    this.user = {
+      name: '',
+      email: '',
+      password: ''
+    };
   }
 
 }

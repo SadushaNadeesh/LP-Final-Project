@@ -1,9 +1,9 @@
-import { BadRequestException, Body, Controller, Get, HttpStatus, Param, Post, Req, Res, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, HttpStatus, Param, Patch, Post, Req, Res, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from './users.service';
 import * as bcrypt from 'bcrypt';
 import { Response, Request } from 'express';
-import { user_roles } from './user.entity';
+import { User, user_roles } from './user.entity';
 
 @Controller('api')
 export class UsersController {
@@ -97,12 +97,21 @@ export class UsersController {
     }
 
     @Get('user/:id')
-      async readCourse(@Param('id') id: number) {
+      async readUser(@Param('id') id: number) {
         const data =  await this.usersService.read(id);
         return {
           statusCode: HttpStatus.OK,
-          message: 'Course fetched successfully',
+          message: 'user fetched successfully',
           data,
+        };
+      }
+
+      @Patch('user/:id')
+      async uppdateUser(@Param('id') id: number, @Body() data: Partial<User>) {
+        await this.usersService.update(id, data);
+        return {
+          statusCode: HttpStatus.OK,
+          message: 'User updated successfully',
         };
       }
 
