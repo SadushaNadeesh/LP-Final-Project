@@ -9,7 +9,7 @@ These back-end services use nmp packages like,
 
 |------------------------------------|
 
-In case of services, 
+In these services, 
 
 The Email Service,
-and Inventory Service are yet to be developed.
+and the Inventory Service are yet to be developed.
