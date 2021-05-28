@@ -1,64 +1,151 @@
-<div class="list row">
-    <div class="col-md-8">
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search by title"
-          [(ngModel)]="title"
-        />
-        <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            (click)="searchTitle()"
-          >
-            Search
-          </button>
-        </div>
-      </div>
+<label>Questions </label> <button class="btn btn-sm btn-outline-primary" (click)="open(content) ">Add Question</button>
+<br>
+<table class="table table-striped">
+    <thead>
+        <th>ID</th>
+        <th>Question</th>
+        <th>Marks</th>
+        <th>Course ID</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let question of questions">
+            <td>{{question.id}}</td>
+            <td>{{question.name}}</td>
+            <td>{{question.marks}}</td>
+            <td>{{question.courseId}}</td>
+            <td> <button class="btn btn-sm btn-outline-primary" (click)="open2(content2, question) ">Edit question</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add Question</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-    <div class="col-md-6">
-      <h4>Tutorials List</h4>
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let tutorial of tutorials; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveTutorial(tutorial, i)"
-        >
-          {{ tutorial.title }}
-        </li>
-      </ul>
-  
-      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTutorials()">
-        Remove All
-      </button>
+    <div class="modal-body">
+        <div style="width: 400px; margin: auto;">
+            <app-add-question></app-add-question>
+        </div>
+
     </div>
-    <div class="col-md-6">
-      <div *ngIf="currentTutorial">
-        <h4>Tutorial</h4>
-        <div>
-          <label><strong>Title:</strong></label> {{ currentTutorial.title }}
-        </div>
-        <div>
-          <label><strong>Description:</strong></label>
-          {{ currentTutorial.description }}
-        </div>
-        <div>
-          <label><strong>Status:</strong></label>
-          {{ currentTutorial.published ? "Published" : "Pending" }}
-        </div>
-  
-        <a class="badge badge-warning" routerLink="/tutorials/{{ currentTutorial.id }}">
-          Edit
-        </a>
-      </div>
-  
-      <div *ngIf="!currentTutorial">
-        <br />
-        <p>Please click on a Tutorial...</p>
-      </div>
+</ng-template>
+
+<ng-template #content2 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Question update: {{modalContent2.id}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-  </div>
-  
+    <div class="modal-body">
+        <div style="width: 400px; margin: auto;">
+            <div *ngIf="currentQuestion" class="edit-form">
+                <h4>Update Question</h4>
+                <form>
+                  <div class="submit-form">
+                    <div *ngIf="!submitted">
+                      <div class="form-group">
+                        <label for="question">Question</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="question"
+                          required
+                          [(ngModel)]="currentQuestion.question"
+                          name="question"
+                        />
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="option1">option 01</label>
+                        <input
+                          class="form-control"
+                          id="option1"
+                          required
+                          [(ngModel)]="currentQuestion.option1"
+                          name="option1"
+                        />
+                      </div>
+              
+                      <div class="form-group">
+                        <label for="option2">option 02</label>
+                        <input
+                          class="form-control"
+                          id="option2"
+                          required
+                          [(ngModel)]="currentQuestion.option2"
+                          name="option2"
+                        />
+                      </div>
+              
+                      <div class="form-group">
+                        <label for="option3">option 03</label>
+                        <input
+                          class="form-control"
+                          id="option3"
+                          required
+                          [(ngModel)]="currentQuestion.option3"
+                          name="option3"
+                        />
+                      </div>
+              
+                      <div class="form-group">
+                        <label for="option4">option 04</label>
+                        <input
+                          class="form-control"
+                          id="option4"
+                          required
+                          [(ngModel)]="currentQuestion.option4"
+                          name="option4"
+                        />
+                      </div>
+              
+                      <div class="form-group">
+                        <label for="answer">Answer</label>
+                        <input
+                          class="form-control"
+                          id="answer"
+                          required
+                          [(ngModel)]="currentQuestion.answer"
+                          name="answer"
+                        />
+                      </div>
+              
+                      <div class="form-group">
+                        <label for="marks">Marks</label>
+                        <input
+                          class="form-control"
+                          id="marks"
+                          required
+                          [(ngModel)]="currentQuestion.marks"
+                          name="marks"
+                        />
+                      </div>
+                
+                      <button (click)="updateQuestion()" class="btn btn-success">Update</button>
+                    </div>
+                
+                    <div *ngIf="submitted">
+                      <h4>You submitted successfully!</h4>
+                      <button class="btn btn-success" (click)="newQuestion()">Add</button>
+                    </div>
+                  </div>
+                </form>
+
+                <!-- <button type="submit" class="badge badge-success" (click)="updateQuestion()">
+                    Update
+                </button> -->
+                <p>{{ message }}</p>
+            </div>
+
+            <div *ngIf="!currentQuestion">
+                <br />
+                <p>Cannot access this Question...</p>
+            </div>
+        </div>
+    </div>
+</ng-template>

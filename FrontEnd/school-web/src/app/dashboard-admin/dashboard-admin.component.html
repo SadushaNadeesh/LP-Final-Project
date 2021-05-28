@@ -2,20 +2,22 @@
   <div id="sidebar-drawer-wrapper">
     <ul>
       <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(0)">Users</button></li>
-      <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(1)">Add Questions</button></li>
-      <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(2)">Add Post</button></li>
-      <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(3)">Add Subject</button></li>
-      <li><button class="btn btn-dark" (click)="onTabClick(4)">Add Content</button></li>
+      <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(1)">Questions</button></li>
+      <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(2)">Courses</button></li>
+      <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(3)">Post</button></li>
+      <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(4)">ubject</button></li>
+      <li><button class="btn btn-dark" (click)="onTabClick(5)">Content</button></li>
 
     </ul>
   </div>
   <div id="main-content-wrapper">
     <div class="">
       <app-users *ngIf="tabIndex === 0"></app-users>
-      <app-add-question *ngIf="tabIndex === 1"></app-add-question>
-      <app-add-post *ngIf="tabIndex === 2"></app-add-post>
-      <app-add-subject *ngIf="tabIndex === 3"></app-add-subject>
-      <app-add-content *ngIf="tabIndex === 4"></app-add-content>
+      <app-question-list *ngIf="tabIndex === 1"></app-question-list>
+      <app-courses-list *ngIf="tabIndex === 2"></app-courses-list>
+      <app-add-post *ngIf="tabIndex === 3"></app-add-post>
+      <app-add-subject *ngIf="tabIndex === 4"></app-add-subject>
+      <app-add-content *ngIf="tabIndex === 5"></app-add-content>
     </div>
   </div>
 </div>
