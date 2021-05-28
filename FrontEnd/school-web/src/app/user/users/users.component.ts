@@ -41,6 +41,7 @@ export class UsersComponent implements OnInit {
         response => {
           console.log(response);
           this.submitted = true;
+          this.retrieveUsers();
         },
         error => {
           console.log(error);
@@ -83,8 +84,9 @@ export class UsersComponent implements OnInit {
 
   modalContent2: any;
   open2(content2: any, modalContent2: any) {
+    //this.retrieveUsers();
     this.modalContent2 = modalContent2;
-    this.getContent(this.modalContent2.id);
+    this.getUser(this.modalContent2.id);
     this.modalService.open(content2, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -102,7 +104,7 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  getContent(id: any): void {
+  getUser(id: any): void {
     this.authService.get(id)
       .subscribe(
         data => {
@@ -125,6 +127,7 @@ export class UsersComponent implements OnInit {
       .subscribe(
         response => {
           this.currentUser.roles = status;
+          console.log(status);
           console.log(response);
         },
         error => {

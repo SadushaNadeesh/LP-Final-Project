@@ -27,8 +27,7 @@ export class UsersService {
     }
 
     async update(id: number, data: Partial<User>) {
-        await this.usersRepo.update({ id }, data);
-        return await this.usersRepo.findOne({ id });
+        return await this.usersRepo.update({ id }, data);
     }
 
 }

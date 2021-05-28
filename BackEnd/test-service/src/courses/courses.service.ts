@@ -40,8 +40,7 @@ export class CoursesService {
       }
 
       async update(id: number, data: Partial<Courses>) {
-        await this.courseRepo.update({ id }, data);
-        return await this.courseRepo.findOne({ id });
+        return await this.courseRepo.update({ id }, data);
       }
 
       async destroy(id: number) {

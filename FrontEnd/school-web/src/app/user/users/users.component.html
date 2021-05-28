@@ -86,17 +86,17 @@
                     </div>
 
                     <div class="form-group">
-                        <label><strong>Status:</strong></label>
-                        {{ currentUser.USER ? "USER" : "MODERATOR" }}
+                        <label><strong>Role:</strong></label>
+                        {{ currentUser.roles}}
                     </div>
                 </form>
 
                 <button class="badge badge-primary mr-2" *ngIf="currentUser.roles=='USER'"
-                    (click)="updateStatus('USER')">
+                    (click)="updateStatus('MODERATOR')">
                     User
                 </button>
                 <button class="badge badge-primary mr-2" *ngIf="currentUser.roles=='MODERATOR'"
-                    (click)="updateStatus('MODERATOR')">
+                    (click)="updateStatus('USER')">
                     Moderator
                 </button>
 
