@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="col-sm-7">
+    <!-- <div class="col-sm-7">
       <h4><small>Topics</small></h4>
       <hr>
       <div class="col-md-7">
@@ -36,12 +36,55 @@
           </div>
         </div>
 
-        <!-- <div *ngIf="!currentSubject">
+        <div *ngIf="!currentSubject">
           <br />
           <p>Please click on a Subject...</p>
-        </div> -->
+        </div>
+      </div>
+    </div> -->
+
+    <div class="col-sm-7">
+      <h4><small>Topics</small></h4>
+      <hr>
+      <div class="col-md-7">
+        <p>
+          You should use <code>class="nav-pills"</code> if you need pills and the <code>[orientation]</code> input
+          to change nav orientation
+        </p>
+        
+        <div class="d-flex">
+          <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+            <li ngbNavItem="top">
+              <a ngbNavLink>Top</a>
+              <ng-template ngbNavContent>
+                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
+                  master cleanse.</p>
+              </ng-template>
+            </li>
+            <li ngbNavItem="middle">
+              <a ngbNavLink>Middle</a>
+              <ng-template ngbNavContent>
+                <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
+                  farm-to-table craft beer twee.</p>
+              </ng-template>
+            </li>
+            <li ngbNavItem="bottom">
+              <a ngbNavLink>Bottom</a>
+              <ng-template ngbNavContent>
+                <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
+                  Donec egestas ligula vitae odio interdum aliquet.</p>
+              </ng-template>
+            </li>
+          </ul>
+        
+          <div [ngbNavOutlet]="nav" class="ml-4"></div>
+        </div>
+        
+        <pre>Active: {{ active }}</pre>
       </div>
     </div>
+
+
   </div>
 </div>
 

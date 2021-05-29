@@ -1,6 +1,8 @@
 import { DatePipe } from '@angular/common';
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from 'src/app/_services/blog.service';
+import { FileUploadService } from 'src/app/_services/file-upload.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
@@ -15,6 +17,9 @@ export class AddPostComponent implements OnInit {
     content: '',
     cover: ''
   };
+
+  existingFile: any;
+
   submitted = false;
   teacher_id = '';
   isLoggedIn = false;
@@ -23,7 +28,7 @@ export class AddPostComponent implements OnInit {
   cr_date: any = new Date();
   fileToUpload: any ;
 
-  constructor(private blogService: BlogService, private tokenStorage: TokenStorageService) {
+  constructor(private blogService: BlogService, private tokenStorage: TokenStorageService, private fileUpload: FileUploadService) {
     //this.cr_date = this.datePipe.transform(this.cr_date, 'yyyy-MM-dd');
    }
 
@@ -34,6 +39,46 @@ export class AddPostComponent implements OnInit {
       //this.user_id = this.tokenStorage.getUser().id;
     }
   }
+
+  chooseFile(event: any): void {
+    this.existingFile = event.target.files[0];
+    console.log(this.existingFile);
+
+    this.fileUpload.uploadFile(this.existingFile).subscribe( (event) => {
+             if (event instanceof HttpResponse) {
+              // this.msg = event.body.message;
+              //this.FileDetail = this.fileUpload.getFiles();
+              console.log(event);
+            }
+          }, (error) => {
+            // this.msg = 'Error occured while uploading file';
+            console.log(error);
+            this.existingFile = undefined;
+          });
+    
+
+  }
+
+  // upload(): void {
+  //   // this.progress = 0;
+  
+  //   this.existingFile = this.chosenFiles.item(0);
+
+  //   this.uploadService.uploadFile(this.existingFile).subscribe( (event) => {
+  //       if (event.type === HttpEventType.UploadProgress) {
+  //         this.progress = Math.round(100 * event.loaded / event.total);
+  //       } else if (event instanceof HttpResponse) {
+  //         this.msg = event.body.message;
+  //         this.FileDetail = this.uploadService.getFiles();
+  //       }
+  //     }, (error) => {
+  //       this.progress = 0;
+  //       this.msg = 'Error occured while uploading file';
+  //       this.existingFile = undefined;
+  //     });
+
+  //   this.chosenFiles = undefined;
+  // } 
 
   handleFileInput(file: FileList) {
     this.fileToUpload = file.item(0);
@@ -55,6 +100,9 @@ export class AddPostComponent implements OnInit {
       teacher_id: this.user_id,
       date: this.cr_date
     };
+
+    
+    console.log(typeof this.post.cover);
 
     this.blogService.create(data)
       .subscribe(

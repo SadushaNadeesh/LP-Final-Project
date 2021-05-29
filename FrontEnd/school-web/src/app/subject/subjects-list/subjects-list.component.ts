@@ -8,7 +8,7 @@ import { SubjectService } from 'src/app/_services/subject.service';
   styleUrls: ['./subjects-list.component.scss']
 })
 export class SubjectsListComponent implements OnInit {
-
+  active = 'top';
   subjects: any[]=[];
   currentSubject: any = null;
   currentIndex = -1;

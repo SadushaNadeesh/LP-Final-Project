@@ -1,6 +1,7 @@
-import {BadRequestException, Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post, Req, Res, UnauthorizedException} from '@nestjs/common';
+import {BadRequestException, Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post, Req, Res, UnauthorizedException, UploadedFile, UseInterceptors} from '@nestjs/common';
 import { Blog } from './blog.entity';
 import { BlogService } from './blog.service';
+import { FileInterceptor, FilesInterceptor } from "@nestjs/platform-express";
 
 @Controller('api')
 export class BlogController {
@@ -21,12 +22,20 @@ export class BlogController {
 
       @Post('post')
       async createblog(@Body() data: Blog) {
+        console.log(data);
          const blog = await this.blogService.create(data);
         return {
           statusCode: HttpStatus.OK,
           message: 'blog post added successfully',
           blog
         };
+      }
+
+      @Post('upload-file')
+      @UseInterceptors(FileInterceptor("cover", { dest: "./uploads" }))
+      uploadSingle(@UploadedFile() file) {
+        //console.log(file);
+        return file;
       }
 
       @Get('post/:id')
@@ -53,7 +62,7 @@ export class BlogController {
       }
 
       @Patch('post/:id')
-      async uppdablog(@Param('id') id: number, @Body() data: Partial<Blog>) {
+      async updateblog(@Param('id') id: number, @Body() data: Partial<Blog>) {
         await this.blogService.update(id, data);
         return {
           statusCode: HttpStatus.OK,

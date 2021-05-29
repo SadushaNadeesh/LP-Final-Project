@@ -13,6 +13,7 @@
             name="name"
           />
         </div>
+        
   
         <div class="form-group">
           <label for="content">Content</label>
@@ -34,6 +35,7 @@
             required
             [(ngModel)]="post.cover"
             name="cover"
+            (change)="chooseFile($event)"
           />
         </div>
   
