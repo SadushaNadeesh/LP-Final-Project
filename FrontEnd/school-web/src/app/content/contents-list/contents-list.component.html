@@ -1,64 +1,117 @@
-<div class="list row">
-    <div class="col-md-8">
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search by title"
-          [(ngModel)]="title"
-        />
-        <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            (click)="searchTitle()"
-          >
-            Search
-          </button>
-        </div>
-      </div>
+<label>Courses </label> &nbsp;&nbsp;&nbsp; <button class="btn btn-sm btn-outline-primary" (click)="open(content) ">Add Content</button>
+<br>
+<table class="table table-striped">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Content</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let content of contents">
+            <td>{{content.id}}</td>
+            <td>{{content.name}}</td>
+            <td>{{content.description}}</td>
+            <td>{{content.content}}</td>
+            <td> <button class="btn btn-sm btn-outline-primary" (click)="open2(content2, content) ">Edit content</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add Content</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-    <div class="col-md-6">
-      <h4>Contents List</h4>
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let data of contents; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveContent(data, i)"
-        >
-          {{ data.name }}
-        </li>
-      </ul>
-  
-      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllContents()">
-        Remove All
-      </button>
+    <div class="modal-body">
+        <div style="width: 400px; margin: auto;">
+            <app-add-content></app-add-content>
+        </div>
+
     </div>
-    <div class="col-md-6">
-      <div *ngIf="currentContent">
-        <h4>Content Details</h4>
-        <div>
-          <label><strong>Title:</strong></label> {{ currentContent.name }}
-        </div>
-        <div>
-          <label><strong>Description:</strong></label>
-          {{ currentContent.description }}
-        </div>
-        <div>
-          <label><strong>Status:</strong></label>
-          {{ currentContent.status ? "Published" : "Pending" }}
-        </div>
-  
-        <a class="badge badge-warning" routerLink="/content/{{ currentContent.id }}">
-          Edit
-        </a>
-      </div>
-  
-      <div *ngIf="!currentContent">
-        <br />
-        <p>Please click on a Content...</p>
-      </div>
+</ng-template>
+
+<ng-template #content2 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Content update: {{modalContent2.id}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-  </div>
-  
+    <div class="modal-body">
+        <div style="width: 400px; margin: auto;">
+            <div *ngIf="currentContent" class="edit-form">
+                <form>
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      required
+                      [(ngModel)]="currentContent.name"
+                      name="name"
+                    />
+                  </div>
+            
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <input
+                      class="form-control"
+                      id="description"
+                      required
+                      [(ngModel)]="currentContent.description"
+                      name="description"
+                    />
+                  </div>
+          
+                  <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea
+                      class="form-control"
+                      id="content"
+                      required
+                      [(ngModel)]="currentContent.content"
+                      name="content"
+                    ></textarea>
+                  </div>
+          
+                  <div class="form-group">
+                    <label for="materials">Materials</label>
+                    <textarea
+                      class="form-control"
+                      id="materials"
+                      required
+                      [(ngModel)]="currentContent.materials"
+                      name="materials"
+                    ></textarea>
+                  </div>
+          
+                  <div class="form-group">
+                    <label for="reference">Reference</label>
+                    <textarea
+                      class="form-control"
+                      id="reference"
+                      required
+                      [(ngModel)]="currentContent.reference"
+                      name="reference"
+                    ></textarea>
+                  </div>
+                  <button type="submit" class="badge badge-success" (click)="updateContent()">
+                    Update
+                </button>
+                </form>
+
+                <p>{{ message }}</p>
+            </div>
+
+            <div *ngIf="!currentContent">
+                <br />
+                <p>Cannot access this Content...</p>
+            </div>
+        </div>
+    </div>
+</ng-template>

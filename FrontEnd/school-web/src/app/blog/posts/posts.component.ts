@@ -1,39 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SubjectService } from 'src/app/_services/subject.service';
+import { BlogService } from 'src/app/_services/blog.service';
 
 @Component({
-  selector: 'app-subject-details',
-  templateUrl: './subject-details.component.html',
-  styleUrls: ['./subject-details.component.scss']
+  selector: 'app-posts',
+  templateUrl: './posts.component.html',
+  styleUrls: ['./posts.component.scss']
 })
-export class SubjectDetailsComponent implements OnInit {
-  subject = {
+export class PostsComponent implements OnInit {
+
+  post = {
     name: '',
-    grade: '',
-    description: ''
+    content: '',
+    cover: ''
   };
   submitted = false;
-  subjectId = 1;
-
+  currentPost: any = null;
   closeResult = '';
   message = '';
-  subjects: any[]=[];
-  currentSubject: any = null;
-  currentIndex = -1;
-  title = '';
-  constructor(private subjectService: SubjectService, private modalService: NgbModal) { }
+  posts: any[]=[];
+  user_id: number = 2;
+  status = 'PENDING'
+  cr_date: any = new Date();
+  fileToUpload: any ;
+
+  constructor(private blogService: BlogService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.retrieveCourses();
+    this.retrievePost();
   }
-
-  retrieveCourses(): void {
-    this.subjectService.getAll()
+  retrievePost(): void {
+    this.blogService.getAll()
       .subscribe(
         data => {
-          this.subjects = data.subject;
+          this.posts = data;
           console.log(data);
         },
         error => {
@@ -41,23 +41,17 @@ export class SubjectDetailsComponent implements OnInit {
         });
   }
 
-  refreshList(): void {
-    this.retrieveCourses();
-    this.currentSubject = null;
-    this.currentIndex = -1;
-  }
-  getSubject(id: any): void {
-    this.subjectService.get(id)
+  getPost(id:any): void {
+    this.blogService.get(id)
       .subscribe(
         data => {
-          this.currentSubject = data;
-          console.log(this.currentSubject);
+          this.currentPost = data;
+          console.log(data);
         },
         error => {
           console.log(error);
         });
   }
-
 
   modalContent: any;
   open(content: any) {
@@ -71,7 +65,7 @@ export class SubjectDetailsComponent implements OnInit {
   modalContent2: any;
   open2(content2: any, modalContent2: any) {
     this.modalContent2 = modalContent2;
-    this.getSubject(this.modalContent2.id);
+    this.getPost(this.modalContent2.id);
     this.modalService.open(content2, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -89,25 +83,24 @@ export class SubjectDetailsComponent implements OnInit {
     }
   }
 
-  updateSubject(): void {
-    console.log("update");
-    this.subjectService.update(this.currentSubject.id, this.currentSubject)
+  updatePost(): void {
+    this.blogService.update(this.currentPost.id, this.currentPost)
       .subscribe(
         response => {
           console.log(response);
-          this.message = 'The subject was updated successfully!';
+          this.message = 'The post was updated successfully!';
         },
         error => {
           console.log(error);
         });
   }
 
-  newSubject(): void {
+  newTutorial(): void {
     this.submitted = false;
-    this.subject = {
+    this.post = {
       name: '',
-      description: '',
-      grade: ''
+      content: '',
+      cover:''
     };
   }
 

@@ -5,15 +5,15 @@
         <th>ID</th>
         <th>Question</th>
         <th>Marks</th>
-        <th>Course ID</th>
+        <th>Answer</th>
         <th>Action</th>
     </thead>
     <tbody>
         <tr *ngFor="let question of questions">
             <td>{{question.id}}</td>
-            <td>{{question.name}}</td>
+            <td>{{question.question}}</td>
             <td>{{question.marks}}</td>
-            <td>{{question.courseId}}</td>
+            <td>{{question.answer}}</td>
             <td> <button class="btn btn-sm btn-outline-primary" (click)="open2(content2, question) ">Edit question</button></td>
         </tr>
     </tbody>
@@ -44,7 +44,6 @@
     <div class="modal-body">
         <div style="width: 400px; margin: auto;">
             <div *ngIf="currentQuestion" class="edit-form">
-                <h4>Update Question</h4>
                 <form>
                   <div class="submit-form">
                     <div *ngIf="!submitted">

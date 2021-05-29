@@ -13,6 +13,7 @@ export class DashboardModeratorComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentComponent = DashboardModeratorComponent;
+    this.tabIndex = 0;
   }
 
   tabIndex: number= 6 ;

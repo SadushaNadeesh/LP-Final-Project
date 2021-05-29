@@ -94,7 +94,7 @@ export class CoursesListComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.message = 'The question was updated successfully!';
+          this.message = 'The course was updated successfully!';
         },
         error => {
           console.log(error);

@@ -21,20 +21,20 @@ export class SubjectController {
 
   @Post('subject')
   async createSubject(@Body() data: Subject) {
-    // const subject = await this.subjectService.create(data);
-    // return {
-    //   statusCode: HttpStatus.OK,
-    //   message: 'subject created successfully',
-    //   subject
-    // };
+    const subject = await this.subjectService.create(data);
+    return {
+      statusCode: HttpStatus.OK,
+      message: 'subject created successfully',
+      subject
+    };
     console.log(data);
   }
 
-  @Post('subjects')
-  @UseInterceptors(FileInterceptor("photo", { dest: "./uploads" }))
-  uploadSingle(@UploadedFile() file) {
-    console.log(file);
-  }
+  // @Post('subjects')
+  // @UseInterceptors(FileInterceptor("photo", { dest: "./uploads" }))
+  // uploadSingle(@UploadedFile() file) {
+  //   console.log(file);
+  // }
 
   @Get('subject/:id')
   async readSubject(@Param('id') id: number) {

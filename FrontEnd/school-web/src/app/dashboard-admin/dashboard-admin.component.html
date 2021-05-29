@@ -4,8 +4,8 @@
       <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(0)">Users</button></li>
       <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(1)">Questions</button></li>
       <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(2)">Courses</button></li>
-      <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(3)">Post</button></li>
-      <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(4)">ubject</button></li>
+      <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(3)">Posts</button></li>
+      <li><button style="margin-right: 10px;" class="btn btn-dark" (click)="onTabClick(4)">Subject</button></li>
       <li><button class="btn btn-dark" (click)="onTabClick(5)">Content</button></li>
 
     </ul>
@@ -15,9 +15,9 @@
       <app-users *ngIf="tabIndex === 0"></app-users>
       <app-question-list *ngIf="tabIndex === 1"></app-question-list>
       <app-courses-list *ngIf="tabIndex === 2"></app-courses-list>
-      <app-add-post *ngIf="tabIndex === 3"></app-add-post>
-      <app-add-subject *ngIf="tabIndex === 4"></app-add-subject>
-      <app-add-content *ngIf="tabIndex === 5"></app-add-content>
+      <app-posts *ngIf="tabIndex === 3"></app-posts>
+      <app-subject-details *ngIf="tabIndex === 4"></app-subject-details>
+      <app-contents-list *ngIf="tabIndex === 5"></app-contents-list>
     </div>
   </div>
 </div>

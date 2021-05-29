@@ -7,12 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardUserComponent implements OnInit {
 
+  tabIndex: number= 6 ;
+  currentComponent: any;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.currentComponent = DashboardUserComponent;
+    this.tabIndex = 0;
   }
-
-  tabIndex: number= 6 ;
 
   onTabClick(index: any){
         this.tabIndex = index;

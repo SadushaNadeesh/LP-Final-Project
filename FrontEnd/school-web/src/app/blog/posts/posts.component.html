@@ -1,34 +1,34 @@
-<label>Courses </label> &nbsp;&nbsp;&nbsp; <button class="btn btn-sm btn-outline-primary" (click)="open(content) ">Add Subject</button>
+<label>Courses </label> &nbsp;&nbsp;&nbsp; <button class="btn btn-sm btn-outline-primary" (click)="open(content) ">Add Post</button>
 <br>
 <table class="table table-striped">
     <thead>
         <th>ID</th>
         <th>Teacher ID</th>
-        <th>Subject Name</th>
-        <th>Grade</th>
+        <th>Post Name</th>
+        <th>content</th>
         <th>Action</th>
     </thead>
     <tbody>
-        <tr *ngFor="let subject of subjects">
-            <td>{{subject.id}}</td>
-            <td>{{subject.teacher_id}}</td>
-            <td>{{subject.name}}</td>
-            <td>{{subject.grade}}</td>
-            <td> <button class="btn btn-sm btn-outline-primary" (click)="open2(content2, subject) ">Edit Subject</button></td>
+        <tr *ngFor="let post of posts">
+            <td>{{post.id}}</td>
+            <td>{{post.teacher_id}}</td>
+            <td>{{post.name}}</td>
+            <td>{{post.content}}</td>
+            <td> <button class="btn btn-sm btn-outline-primary" (click)="open2(content2, post) ">Edit Post</button></td>
         </tr>
     </tbody>
 </table>
 
 <ng-template #content let-modal>
     <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Add Subject</h4>
+        <h4 class="modal-title" id="modal-basic-title">Add Post</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
         <div style="width: 400px; margin: auto;">
-            <app-add-subject></app-add-subject>
+            <app-add-post></app-add-post>
         </div>
 
     </div>
@@ -36,49 +36,50 @@
 
 <ng-template #content2 let-modal>
     <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Subject update: {{modalContent2.id}}</h4>
+        <h4 class="modal-title" id="modal-basic-title">Post update: {{modalContent2.id}}</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
         <div style="width: 400px; margin: auto;">
-            <div *ngIf="currentSubject" class="edit-form">
+            <div *ngIf="currentPost" class="edit-form">
                 <form>
                   <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">Post Name</label>
                     <input
+                      type="text"
                       class="form-control"
                       id="name"
                       required
-                      [(ngModel)]="currentSubject.name"
+                      [(ngModel)]="currentPost.name"
                       name="name"
                     />
                   </div>
             
                   <div class="form-group">
-                    <label for="description">Description</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="description"
-                      required
-                      [(ngModel)]="currentSubject.description"
-                      name="description"
-                    />
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="grade">Grade</label>
+                    <label for="content">Content</label>
                     <input
                       class="form-control"
-                      id="grade"
+                      id="content"
                       required
-                      [(ngModel)]="currentSubject.grade"
-                      name="grade"
+                      [(ngModel)]="currentPost.content"
+                      name="content"
                     />
                   </div>
-                  <button type="submit" class="badge badge-success" (click)="updateSubject()">
+          
+                  <!-- <div class="form-group">
+                    <label for="cover">Cover</label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="cover"
+                      required
+                      [(ngModel)]="post.cover"
+                      name="cover"
+                    />
+                  </div> -->
+                  <button type="submit" class="badge badge-success" (click)="updatePost()">
                     Update
                 </button>
                 </form>
@@ -86,9 +87,9 @@
                 <p>{{ message }}</p>
             </div>
 
-            <div *ngIf="!currentSubject">
+            <div *ngIf="!currentPost">
                 <br />
-                <p>Cannot access this Subject...</p>
+                <p>Cannot access this Post...</p>
             </div>
         </div>
     </div>

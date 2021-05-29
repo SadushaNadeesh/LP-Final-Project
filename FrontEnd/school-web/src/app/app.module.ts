@@ -34,6 +34,7 @@ import { TestComponent } from './quiz/test/test.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UsersComponent } from './user/users/users.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { PostsComponent } from './blog/posts/posts.component';
 
 //import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
@@ -66,7 +67,8 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
     ResultComponent,
     TestComponent,
     UsersComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
