@@ -42,4 +42,9 @@ export class BlogService {
         await this.blogRepo.delete({ id });
         return { deleted: true };
       }
+
+      public async setCover(postid: number, coverUrl: string){
+        console.log(coverUrl);
+        this.blogRepo.update(postid, {cover: coverUrl});
+    }
 }
