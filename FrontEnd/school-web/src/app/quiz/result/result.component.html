@@ -7,8 +7,11 @@
       <h3>{{quizService.correctAnswerCount}}/{{this.quizService.qns.length}}</h3>
       <span>Time Elapsed : {{quizService.displayTimeElapsed()}}</span>
     </div>
-    <div class="card-action">
+    <div *ngIf="!submitted" class="card-action">
       <button class="btn" (click)="OnSubmit()">Submit</button>
+    </div>
+    <div *ngIf="submitted" class="card-action">
+      <button class="btn" (click)="Portal()">Student Portal</button>
     </div>
   </div>
 </div>

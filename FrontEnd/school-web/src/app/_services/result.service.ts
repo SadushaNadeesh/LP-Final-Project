@@ -20,8 +20,14 @@ export class ResultService {
     return this.http.get(`${baseUrl}result/${id}`);
   }
 
-  create(data: any): Observable<any> {
-    return this.http.post(baseUrl+'addresult', data);
+  create(student_id:number, courseId:number, grade:number, marks:number, status:string): Observable<any> {
+    return this.http.post(baseUrl+'addresult', {
+      student_id,
+      courseId,
+      grade,
+      marks,
+      status
+    });
   }
 
   update(id: any, data: any): Observable<any> {

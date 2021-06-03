@@ -15,12 +15,8 @@
             <div class="col-md-9 mb-5">
                 <h2>What We Do</h2>
                 <hr />
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi
-                    soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam.
-                    Repellat explicabo, maiores!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur
-                    magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt
-                    voluptate. Voluptatum.</p>
+                <p>Learn for your future.</p>
+                <p>Start moving toward where you want to be.</p>
                 <a class="btn btn-primary btn-lg" href="#!">Call to Action »</a>
             </div>
             <div class="col-md-3 mb-5">
@@ -29,60 +25,37 @@
                 <address>
                     <strong>Start Bootstrap</strong>
                     <br />
-                    3481 Melrose Place
+                    No.247A
                     <br />
-                    Beverly Hills, CA 90210
+                    Morris Rd, 80000
                     <br />
                 </address>
                 <address>
                     <abbr title="Phone">P:</abbr>
-                    (123) 456-7890
+                    (94) 91 22 12345
                     <br />
                     <abbr title="Email">E:</abbr>
-                    <a href="mailto:#">name@example.com</a>
+                    <a href="mailto:#">info@school.com</a>
                 </address>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 mb-5">
+            <div class="col-md-4 mb-5" *ngFor = "let post of lastPosts">
                 <div class="card h-100">
-                    <img class="card-img-top" src="https://via.placeholder.com/300x200" alt="..." />
+                    <img class="card-img-top" width="300" height="300" src="{{post.cover}}" />
                     <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
-                            necessitatibus neque sequi doloribus.</p>
+                        <h4 class="card-title">{{post.name}}</h4>
+                        <p class="card-text">{{post.content}}</p>
                     </div>
                     <div class="card-footer"><a class="btn btn-primary" href="#!">Find Out More!</a></div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <img class="card-img-top" src="https://via.placeholder.com/300x200" alt="..." />
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
-                            necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn btn-primary" href="#!">Find Out More!</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <img class="card-img-top" src="https://via.placeholder.com/300x200" alt="..." />
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
-                            necessitatibus neque.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn btn-primary" href="#!">Find Out More!</a></div>
-                </div>
-            </div>
+            </div>            
         </div>
     </div>
     <!-- Footer-->
     <footer class="py-5 bg-dark card">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
+            <p class="m-0 text-center text-white">Copyright &copy;school.com 2021</p>
         </div>
     </footer>
 </div>

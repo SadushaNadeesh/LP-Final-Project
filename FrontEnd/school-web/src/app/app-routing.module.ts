@@ -52,7 +52,7 @@ const routes: Routes = [
   { path: 'subject/:id', component: SubjectDetailsComponent },
   { path: 'add-subject', component: AddSubjectComponent },
   { path: 'quizzes', component: QizzesComponent },
-  { path: 'result', component: ResultComponent },
+  { path: 'result/:id', component: ResultComponent },
   { path: 'test/:id', component: TestComponent },
   { path: 'user/:id', component: UserDetailComponent }
 ];

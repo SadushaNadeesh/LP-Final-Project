@@ -11,6 +11,7 @@ import { TestService } from 'src/app/_services/test.service';
 })
 export class TestComponent implements OnInit {
   currentCourse = false;
+  courseId: any;
   message = '';
 
   constructor(private route: ActivatedRoute,
@@ -19,6 +20,7 @@ export class TestComponent implements OnInit {
   ngOnInit(): void {
 
     this.message = '';
+    this.courseId = this.route.snapshot.paramMap.get('id');
     this.getCourse(this.route.snapshot.paramMap.get('id'));
 
   }
@@ -57,7 +59,7 @@ export class TestComponent implements OnInit {
     this.quizService.qnProgress++;
     if (this.quizService.qnProgress == this.quizService.qns.length) {
       clearInterval(this.quizService.timer);
-      this.router.navigate(['/result']);
+      this.router.navigate([`/result/${this.courseId}`]);
     }
   }
 
