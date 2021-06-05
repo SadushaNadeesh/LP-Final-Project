@@ -1,12 +1,18 @@
 <div>
-    <h3 style="margin-left: 10px;">Student Portal</h3>
-    <div>
-      <button style="margin-right: 10px;margin-left: 10px;" class="btn btn-primary btn-lg" (click)="onTabClick(0)">Subject Materials</button>
-      <button style="margin-right: 10px;" class="btn btn-success btn-lg" (click)="onTabClick(1)">Quizzes</button>
-    </div>
-    <br>
-    <div>
-      <app-subjects-list *ngIf="tabIndex === 0"></app-subjects-list>
-      <app-qizzes *ngIf="tabIndex === 1"></app-qizzes>
-    </div>
+  <h3 style="margin-left: 10px;">Student Portal</h3>
+  <div>
+    <button style="margin-right: 10px;margin-left: 10px;" class="btn btn-primary btn-lg" (click)="onTabClick(0)">Subject
+      Materials</button>
+    <button style="margin-right: 10px;" class="btn btn-success btn-lg" (click)="onTabClick(1)">Quizzes</button>
   </div>
+  <br>
+  <div>
+    <app-subjects-list *ngIf="tabIndex === 0"></app-subjects-list>
+    <app-qizzes *ngIf="tabIndex === 1"></app-qizzes>
+  </div>
+</div>
+<footer class="py-5 bg-dark card">
+  <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; school.com 2021</p>
+  </div>
+</footer>

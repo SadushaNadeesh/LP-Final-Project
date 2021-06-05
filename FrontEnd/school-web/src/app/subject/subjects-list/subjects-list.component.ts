@@ -8,14 +8,14 @@ import { SubjectService } from 'src/app/_services/subject.service';
   styleUrls: ['./subjects-list.component.scss']
 })
 export class SubjectsListComponent implements OnInit {
-  active = 'top';
-  subjects: any[]=[];
+  active = '';
+  subjects: any[] = [];
   currentSubject: any = null;
   currentIndex = -1;
   title = '';
 
-  contents: any[] =[] ;
-  currentContent: any='';
+  contents: any[] = [];
+  currentContent: any = '';
 
   constructor(private subjectService: SubjectService, private contentService: ContentService) { }
 
@@ -51,6 +51,11 @@ export class SubjectsListComponent implements OnInit {
       .subscribe(
         data => {
           this.contents = data.content.contents;
+          if (this.contents.length > 0) {
+            this.active = this.contents[0].name;
+          }else{
+            this.active = 'Currently No content available for this subject';
+          }
           console.log(this.contents);
         },
         error => {

@@ -1,10 +1,9 @@
 <div class="container-fluid">
   <div class="row content">
-    <div class="col-sm-4 sidenav">
+    <div class="col-sm-3 sidenav">
       <h4>Subject</h4>
       <hr>
       <ul class="nav nav-pills nav-stacked">
-
       </ul><br>
       <div class="row" *ngFor="let subject of subjects; let i = index" [class.active]="i == currentIndex"
         (click)="setActiveTopic(subject.id, i)">
@@ -19,75 +18,42 @@
       </div>
     </div>
 
-    <!-- <div class="col-sm-7">
+    <!-- ////////////////////  Content Display for Subject  ////////////////////// -->
+    <div class="col-sm-8">
       <h4><small>Topics</small></h4>
       <hr>
-      <div class="col-md-7">
-        <div>
-          <div class="row" *ngFor="let content of contents; let i = index" [class.active]="i == currentIndex">
-            <h2>{{ content.name }}</h2>
-            <h5><span class="glyphicon glyphicon-time"></span> Updated in {{ content.name }}</h5>
-            <br>
-            <p>
-              {{ content.name }}
-            </p>
-            <br>
-            <hr>
-          </div>
-        </div>
-
-        <div *ngIf="!currentSubject">
-          <br />
-          <p>Please click on a Subject...</p>
-        </div>
-      </div>
-    </div> -->
-
-    <div class="col-sm-7">
-      <h4><small>Topics</small></h4>
-      <hr>
-      <div class="col-md-7">
+      <div class="col-md-12">
         <p>
-          You should use <code>class="nav-pills"</code> if you need pills and the <code>[orientation]</code> input
-          to change nav orientation
+          You should <code>Select a Subject First</code> After that <code>[choose the Topic/Lesson]</code> Good luck.
         </p>
-        
+
         <div class="d-flex">
           <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
-            <li ngbNavItem="top">
-              <a ngbNavLink>Top</a>
+
+            <li ngbNavItem={{content.name}} *ngFor="let content of contents; let i = index">
+              <a ngbNavLink>{{content.name}}</a>
               <ng-template ngbNavContent>
-                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-                  master cleanse.</p>
+                <p>{{content.content}}
+                  Velocity is defined as the rate of change of position with respect to time, which may also be referred to as the instantaneous velocity to emphasize the distinction from the average velocity. In some applications the average velocity of an object might be needed, that is to say, the constant velocity that would provide the same resultant displacement as a variable velocity in the same time interval, v(t), over some time period Δt. Average velocity can be calculated as:
+                  Velocity is defined as the rate of change of position with respect to time, which may also be referred to as the instantaneous velocity to emphasize the distinction from the average velocity. In some applications the average velocity of an object might be needed, that is to say, the constant velocity that would provide the same resultant displacement as a variable velocity in the same time interval, v(t), over some time period Δt. Average velocity can be calculated as:
+                </p>
               </ng-template>
             </li>
-            <li ngbNavItem="middle">
-              <a ngbNavLink>Middle</a>
-              <ng-template ngbNavContent>
-                <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
-                  farm-to-table craft beer twee.</p>
-              </ng-template>
-            </li>
-            <li ngbNavItem="bottom">
-              <a ngbNavLink>Bottom</a>
-              <ng-template ngbNavContent>
-                <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
-                  Donec egestas ligula vitae odio interdum aliquet.</p>
-              </ng-template>
-            </li>
+
           </ul>
-        
+
           <div [ngbNavOutlet]="nav" class="ml-4"></div>
         </div>
-        
+        <br>
         <pre>Active: {{ active }}</pre>
       </div>
     </div>
+    <!-- ////////////////////////////////////////// -->
 
 
   </div>
 </div>
 
-<footer class="container-fluid">
+<!-- <footer class="container-fluid">
   <p>Footer Text</p>
-</footer>
+</footer> -->

@@ -18,19 +18,22 @@
         <div class="col-sm-9">
             <h4><small>RECENT POSTS</small></h4>
             <hr>
-            <div class="row" *ngFor="let post of posts; let i = index" [class.active]="i == currentIndex">
+            <div class="row" *ngFor="let post of posts | paginate: { itemsPerPage: 5, currentPage: p }; let i = index"
+                [class.active]="i == currentIndex">
                 <h2>{{ post.name }}</h2>
                 <h5><span class="glyphicon glyphicon-time"></span> Updated in {{ post.name }}</h5>
                 <br>
                 <p>
                     {{ post.content }}
                 </p>
-                <button type="button" class="btn btn-primary btn-sm" style="width: 140px;" routerLink="/post/{{ post.id }}">
+                <button type="button" class="btn btn-primary btn-sm" style="width: 140px;"
+                    routerLink="/post/{{ post.id }}">
                     Read more..
                 </button>
                 <hr>
                 <br>
             </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
     </div>
 </div>
@@ -43,4 +46,4 @@
     <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; school.com 2021</p>
     </div>
-  </footer>
+</footer>

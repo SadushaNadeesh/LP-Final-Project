@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { FormsModule } from '@angular/forms';
@@ -6,6 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import {NgxPaginationModule} from 'ngx-pagination';
+
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
@@ -33,7 +36,7 @@ import { ResultComponent } from './quiz/result/result.component';
 import { TestComponent } from './quiz/test/test.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UsersComponent } from './user/users/users.component';
-import { UserDetailComponent } from './user/user-detail/user-detail.component';
+// import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { PostsComponent } from './blog/posts/posts.component';
 
 //import { authInterceptorProviders } from './_helpers/auth.interceptor';
@@ -67,17 +70,19 @@ import { PostsComponent } from './blog/posts/posts.component';
     ResultComponent,
     TestComponent,
     UsersComponent,
-    UserDetailComponent,
+    // UserDetailComponent,
     PostsComponent
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

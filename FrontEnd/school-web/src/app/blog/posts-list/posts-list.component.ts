@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from 'src/app/_services/blog.service';
-import {NgbPaginationConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-posts-list',
   templateUrl: './posts-list.component.html',
-  styleUrls: ['./posts-list.component.scss'],
-  providers: [NgbPaginationConfig]
+  styleUrls: ['./posts-list.component.scss']
 })
 export class PostsListComponent implements OnInit {
 
@@ -14,6 +12,7 @@ export class PostsListComponent implements OnInit {
   currentPost: any = 'null';
   currentIndex = -1;
   title = '';
+  p:any;
 
   constructor(private blogService: BlogService) { }
 

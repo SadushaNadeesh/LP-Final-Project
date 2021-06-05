@@ -21,7 +21,7 @@ export class AddContentComponent implements OnInit {
   isLoggedIn = false;
   user_id = '';
   status = 'PENDING';
-  subjectId: number = 1;
+  subjectId: number = 2;
 
   constructor(private contentService: ContentService, private tokenStorage: TokenStorageService) { }
 

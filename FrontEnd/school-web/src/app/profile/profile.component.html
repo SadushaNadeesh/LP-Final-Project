@@ -1,27 +1,32 @@
 <div class="container" *ngIf="currentUser; else loggedOut">
-    <header class="jumbotron">
-      <h3>
-        <strong>{{ currentUser.name }}</strong> Profile
-      </h3>
-    </header>
-    <!-- <p>
+  <header class="jumbotron">
+    <h3>
+      <strong>{{ currentUser.name }}</strong> Profile
+    </h3>
+  </header>
+  <!-- <p>
       <strong>Token:</strong>
       {{ currentUser.accessToken.substring(0, 20) }} ...
       {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
     </p> -->
-    <p>
-      <strong>Email:</strong>
-      {{ currentUser.email }}
-    </p>
-    <strong>Roles:</strong>
-    <ul>
-      <!-- <li *ngFor="let role of currentUser.roles"> -->
-      <li>
-        {{ currentUser.roles }}
-      </li>
-    </ul>
+  <p>
+    <strong>Email:</strong>
+    {{ currentUser.email }}
+  </p>
+  <strong>Roles:</strong>
+  <ul>
+    <!-- <li *ngFor="let role of currentUser.roles"> -->
+    <li>
+      {{ currentUser.roles }}
+    </li>
+  </ul>
+</div>
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
+<footer class="py-5 bg-dark card">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; school.com 2021</p>
   </div>
-  
-  <ng-template #loggedOut>
-    Please login.
-  </ng-template>
+</footer>
