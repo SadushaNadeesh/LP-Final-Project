@@ -18,6 +18,6 @@ This web project is developed using,
 Angular for the front-end.
 NestJs, TypeORM, MySQL for the back end.
 
-Hope to implement Inventory service in the future using GraphQL.
+Hope to implement Inventory system service in the future using GraphQL.
 
 Thank you.

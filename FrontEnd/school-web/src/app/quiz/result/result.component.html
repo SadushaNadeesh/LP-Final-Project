@@ -1,6 +1,8 @@
-<div class="card-image" style="width: 600px; margin: auto; padding-top: 20px;">
-    <!-- <img src="../../assets/img/trophy.png" style="width: 250px;height : 250px;"> -->
-  <!-- </div> -->
+<div class="card-image" style="width: 600px; margin: auto; padding-top: 40px;">
+  <h2 class="header">Completed!</h2>
+  <div class="card-image">
+    <img src="../../assets/img/trophy.png" style="width: 250px;height : 250px;">
+  </div>
   <div class="card-stacked">
     <div class="card-content">
       <h4>{{currentUser.name}}</h4>
@@ -8,10 +10,10 @@
       <span>Time Elapsed : {{quizService.displayTimeElapsed()}}</span>
     </div>
     <div *ngIf="!submitted" class="card-action">
-      <button class="btn" (click)="OnSubmit()">Submit</button>
+      <button class="btn btn-primary" (click)="OnSubmit()">Submit Results!.</button>
     </div>
     <div *ngIf="submitted" class="card-action">
-      <button class="btn" (click)="Portal()">Student Portal</button>
+      <button class="btn btn-info" (click)="Portal()">Student Portal.</button>
     </div>
   </div>
 </div>
