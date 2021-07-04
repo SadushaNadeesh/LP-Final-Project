@@ -4,7 +4,7 @@ This project is about online tutoring web app.
 
 1) This covers a online Quiz program.
 2) Course content according to subject.
-3) CRUD operations for adding a, course, quiz, subject, contents, blog-post.
+3) CRUD operations for adding a, course, quiz, subject, contents, blog-post, users.
 (Completed)
 
 2nd phase:
