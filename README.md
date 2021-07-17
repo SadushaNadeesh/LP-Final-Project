@@ -2,7 +2,7 @@ This project is about online tutoring web app.
 
 1st phase:
 
-1) This covers a online Quiz program.
+1) This covers a online Quiz program MCQ's and marks calculation.
 2) Course content according to subject.
 3) CRUD operations for adding a, course, quiz, subject, contents, blog-post, users.
 (Completed)
