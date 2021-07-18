@@ -7,9 +7,9 @@ This project is about online tutoring web app.
 3) CRUD operations for adding a, course, quiz, subject, contents, blog-post, users.
 (Completed)
 
-2nd phase:
+2nd phase: (Thing needed to add to the project)
 
-1) Email / notifications.
+1) Email / notifications (WebSocket implementation).
 2) Inventory Service
 (Hope to implement in the future)
 
