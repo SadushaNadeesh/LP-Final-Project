@@ -9,7 +9,7 @@ This project is about online tutoring web app.
 
 2nd phase: (Thing needed to add to the project)
 
-1) Email / notifications (WebSocket implementation).
+1) Email / notifications (WebSocket and socketcluster implementation).
 2) Inventory Service
 (Hope to implement in the future)
 
