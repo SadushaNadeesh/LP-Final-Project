@@ -19,5 +19,3 @@ Angular for the front-end.
 NestJs, TypeORM, MySQL for the back end.
 
 Hope to implement a Inventory service in the future using GraphQL.
-
-Thank you.
